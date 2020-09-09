@@ -54,14 +54,12 @@ t_stat, p_val = stats.ttest_ind(df_1['Adjusted Sea Level (inches)'], df_2['Adjus
 #t-statistics = -2.839 and p-value = 0.011
 #plot a time series graph of rate of Arctic ice melting
 
-x1 = np.array(df_1.Year)
-x2 = np.array(df_2.Year)
-
-y1 = np.array(df_1['Adjusted Sea Level (inches)'])
-y2 = np.array(df_2['Adjusted Sea Level (inches)'])
-
-plt.plot(x1, y1, label = 'first plot')
-plt.plot(x2,y2, label = 'second plot')
+df_sea= pd.read_excel('/Users/neelamswami/Personal Project/global_sea-level.xls', sheet_name = 'sea_level')
+df_sea = df_sea[99:134]
+x1_sea = np.array(df_sea.Year)
+y1_sea = np.array(df_sea['Adjusted Sea Level (inches)'])
+plt.plot(x1_sea, y1_sea)
+plt.title('Sea Level Rise')
 plt.legend()
 plt.xlabel('Year')
 plt.ylabel('Average sea level rise in inches')

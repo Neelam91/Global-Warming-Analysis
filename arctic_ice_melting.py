@@ -64,14 +64,18 @@ print(t_critical_value)
 #t_critical = 1.690
 #plot a time series graph of rate of Arctic ice melting
 
-x1 = np.array(df_1.Year)
-x2 = np.array(df_2.Year)
+df = pd.read_excel('/Users/neelamswami/Personal Project/Arctic_ice_melting.xlsx' )
+df_1 = df[:38]
+df_1 = df_1.loc[:,['Year','extent (in Million square KM)']]
+df_1.columns = ['Year', 'Extent Melt (in Million square KM)']
 
-y1 = np.array(df_1['Extent Melt (in Million square KM)'])
-y2 = np.array(df_2['Extent Melt (in Million square KM)'])
+x = np.array(df_1.Year)
 
-plt.plot(x1, y1, label = 'first plot')
-plt.plot(x2,y2, label = 'second plot')
+
+y = np.array(df_1['Extent Melt (in Million square KM)'])
+
+plt.plot(x, y)
+plt.title('Arctic Ice Melting graph')
 plt.legend()
 plt.xlabel('Year')
 plt.ylabel('Average rate of ice melting(in Million Square KM)')

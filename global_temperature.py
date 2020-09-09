@@ -49,20 +49,23 @@ degreeF = 43
 t_critical_value = t.ppf(p, degreeF)
 print(t_critical_value)
 #t-critical = 1.681
+
 # Now, lets plot a time series graph
+
+df_graph = pd.read_excel('/Users/neelamswami/Personal Project/global_temp_data.xlsx', sheet_name = 'Global_temp')
 x1 = np.array(df_1.Year)
+df_graph = df_graph[99:]
 
-x2= np.array(df_2.Year)
+x= np.array(df_graph.Year)
 
-y1 = np.array(df_1['Mean_gtemp'])
-y2 = np.array(df_2['Mean_gtemp'])
+y = np.array(df_graph['Mean_gtemp'])
 
-plt.plot(x1, y1, label = 'first plot')
-plt.plot(x2,y2, label = 'second plot')
+
+plt.plot(x, y)
 plt.title ('Average Global Temperature in Degree Celsius')
 plt.legend()
 plt.xlabel('Year')
-plt.ylabel('Average temperature degree celsius')
+plt.ylabel('Average Temp. anomaly in degree celsius')
 
 plt.savefig('/Users/neelamswami/Personal Project/global_temp.png')
 
